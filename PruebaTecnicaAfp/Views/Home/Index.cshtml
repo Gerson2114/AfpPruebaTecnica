@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Prueba Tecnica AFP";
+}
+
+<form id="frmMultiplo">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Escriba un numero</label>
+        <input type="text" class="form-control" id="num" placeholder="Escriba un numero">
+        <small id="respuesta" class="form-text text-muted"></small>
+    </div>
+    <button id="btnMultiplo" type="submit" class="btn btn-primary">Submit</button>
+</form>
+@section Scripts{
+    <script>
+        $('#frmMultiplo').submit(function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            $.get("Home/numero", { numero: $('#num').val()}, function (data) {
+                $('#respuesta').html('');
+                $('#respuesta').html(data);
+            });
+        })
+    </script>
+
+}
